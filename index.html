@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Logical Circuit Exercise</title>
+  <link rel="stylesheet" href="../build/lechef.css" />
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+<style> /* editor styles */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+.circuit-exercise-container {
+  height: 300px;
+  width: 100%;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+.circuit-exercise-container > svg {
+  z-index: 0;
+}
+
+  /** styling the exercise feedback */
+/*
+  .circuit-feedback {
+    background-color: white;
+    z-index: 300;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .circuit-feedback * {
+    z-index: 300;
+    cursor: auto !important;
+  }
+  .circuit-feedback .circuit {
+    position: relative;
+  }
+  */
+</style>
+<style>
+</style>
+<h1>Circuit Exercise Example</h1>
+<div>Construct a circuit for this truth table:</div>
+<table>
+  <thead>
+    <tr><th>X</th><th>Y</th><th>G</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>0</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td><td>1</td></tr>
+    <tr><td>1</td><td>1</td><td>1</td></tr>
+    <tr><td>0</td><td>0</td><td>0</td></tr>
+  </tbody>
+</table>
+<div style="position:relative;">
+  <div class="circuit-exercise-container"></div>
+</div>
+<script src="../libs/jquery-2.1.1.min.js"></script>
+<script src="../libs/jquery-ui-1.11.min.js"></script>
+<script src="../libs/snap.svg.js"></script>
+<script src="../build/lechef.js"></script>
+<script>
+  var exer = new CircuitExercise({element: $(".circuit-exercise-container"), input: ["x", "y"], output: "g",
+    grading: [{input: {x: true, y: false}, output: true},
+      {input: {x: false, y: true}, output: true},
+      {input: {x: true, y: true}, output: true},
+      {input: {x: false, y: false}, output: false}], components: ["and", "not", "or", "xor", "nor", "nand"]});
+</script>
+</body>
+</html>
